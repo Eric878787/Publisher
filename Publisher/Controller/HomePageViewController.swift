@@ -6,13 +6,18 @@
 //
 
 import UIKit
+import ESPullToRefresh
 
 class HomePageViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var buttonLabel: UIButton!
     var dataManager = DataManager()
-    var articles: [[String:Any]] = []
+    var articles: [[String:Any]] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +37,24 @@ class HomePageViewController: UIViewController, UITableViewDataSource {
         // Fetch Data
         self.dataManager.fetchData { data in
             self.articles.append(data)
+            self.articles.sort{
+                  ( $0["createdTime"] as? Double ?? 0 ) > ( $1["createdTime"] as? Double ?? 0)
+               }
             self.tableView.reloadData()
         }
         
+        // Refresher
+        self.tableView.es.addPullToRefresh {
+            [unowned self] in
+            self.articles = []
+            self.dataManager.fetchData { data in
+                self.articles.append(data)
+                self.articles.sort{
+                      ( $0["createdTime"] as? Double ?? 0 ) > ( $1["createdTime"] as? Double ?? 0)
+                   }
+            }
+            self.tableView.es.stopPullToRefresh()
+        }
         
     }
     
@@ -47,12 +67,12 @@ class HomePageViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as? TableViewCell ?? TableViewCell ()
         cell.titleLabel.text = articles[indexPath.row]["title"] as? String ?? ""
         guard let author = articles[indexPath.row]["aurthor"] as? [String:Any] else { return TableViewCell() }
-        print(author)
+        print(articles.count)
         cell.autorNameLabel.text = author["name"] as? String ?? ""
         let timeStamp = articles[indexPath.row]["createdTime"]
         let date = Date(timeIntervalSince1970: timeStamp as? TimeInterval ?? 1480134638.0)
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY/MM/dd"
+        dateFormatter.dateFormat = "MMM d, h:mm a"
         cell.createdTimeLabel.text = dateFormatter.string(from: date)
         cell.contentLabel.text = articles[indexPath.row]["content"] as? String ?? ""
         cell.categoryLabel.text = articles[indexPath.row]["category"] as? String ?? ""

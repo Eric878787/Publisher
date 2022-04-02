@@ -29,6 +29,7 @@ class PublishArticlePageViewController: UIViewController {
     
     @IBAction func createData(_ sender: Any) {
         dataManager.createData(categoryTextField.text ?? "", contentTextField.text ?? "", titleTextField.text ?? "")
+        self.navigationController?.popViewController(animated: true)
     }
     
 

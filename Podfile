@@ -8,5 +8,7 @@ target 'Publisher' do
   # Pods for Publisher
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
+  pod 'MJRefresh'
+  pod "ESPullToRefresh"
 
 end
