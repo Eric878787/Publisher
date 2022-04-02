@@ -28,6 +28,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="createArticle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NTN-ay-JHq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -54,13 +57,58 @@
         <!--Publish Article Page View Controller-->
         <scene sceneID="YMJ-y6-RqE">
             <objects>
-                <viewController id="bks-vI-Brz" customClass="PublishArticlePageViewController" customModule="Publisher" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PublishArticlePageViewController" id="bks-vI-Brz" customClass="PublishArticlePageViewController" customModule="Publisher" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UW9-s7-Z0a">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WzQ-aO-a94">
+                                <rect key="frame" x="4" y="48" width="406" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WeH-ES-HGz">
+                                <rect key="frame" x="4" y="86" width="406" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="content" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ht6-Qo-LgI">
+                                <rect key="frame" x="4" y="124" width="406" height="699"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEl-U6-o89">
+                                <rect key="frame" x="4" y="827" width="406" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="createData:" destination="bks-vI-Brz" eventType="touchUpInside" id="SEB-nX-J8z"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="t5a-o9-JTs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="t5a-o9-JTs" firstAttribute="bottom" secondItem="wEl-U6-o89" secondAttribute="bottom" constant="4" id="FUm-Po-8Jd"/>
+                            <constraint firstItem="WzQ-aO-a94" firstAttribute="top" secondItem="t5a-o9-JTs" secondAttribute="top" constant="4" id="MXa-Ti-slN"/>
+                            <constraint firstItem="t5a-o9-JTs" firstAttribute="trailing" secondItem="WeH-ES-HGz" secondAttribute="trailing" constant="4" id="STe-qd-9zp"/>
+                            <constraint firstItem="ht6-Qo-LgI" firstAttribute="leading" secondItem="t5a-o9-JTs" secondAttribute="leading" constant="4" id="TMp-ww-qWA"/>
+                            <constraint firstItem="WeH-ES-HGz" firstAttribute="top" secondItem="WzQ-aO-a94" secondAttribute="bottom" constant="4" id="Xqx-gt-5xR"/>
+                            <constraint firstItem="ht6-Qo-LgI" firstAttribute="top" secondItem="WeH-ES-HGz" secondAttribute="bottom" constant="4" id="fpC-dA-Gbt"/>
+                            <constraint firstItem="wEl-U6-o89" firstAttribute="leading" secondItem="t5a-o9-JTs" secondAttribute="leading" constant="4" id="qB3-oR-Yfh"/>
+                            <constraint firstItem="wEl-U6-o89" firstAttribute="top" secondItem="ht6-Qo-LgI" secondAttribute="bottom" constant="4" id="tS7-ce-qbm"/>
+                            <constraint firstItem="WzQ-aO-a94" firstAttribute="leading" secondItem="t5a-o9-JTs" secondAttribute="leading" constant="4" id="uRv-rX-yAx"/>
+                            <constraint firstItem="t5a-o9-JTs" firstAttribute="trailing" secondItem="ht6-Qo-LgI" secondAttribute="trailing" constant="4" id="uvh-ug-jic"/>
+                            <constraint firstItem="t5a-o9-JTs" firstAttribute="trailing" secondItem="WzQ-aO-a94" secondAttribute="trailing" constant="4" id="uzb-ix-3yG"/>
+                            <constraint firstItem="t5a-o9-JTs" firstAttribute="trailing" secondItem="wEl-U6-o89" secondAttribute="trailing" constant="4" id="xKO-YE-80x"/>
+                            <constraint firstItem="WeH-ES-HGz" firstAttribute="leading" secondItem="t5a-o9-JTs" secondAttribute="leading" constant="4" id="zN9-vd-mWs"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="categoryTextField" destination="WeH-ES-HGz" id="wFj-O3-63r"/>
+                        <outlet property="contentTextField" destination="ht6-Qo-LgI" id="Ofo-Lk-sav"/>
+                        <outlet property="titleTextField" destination="WzQ-aO-a94" id="Nm2-Ki-sit"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dyI-Ds-Ils" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

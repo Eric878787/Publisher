@@ -11,6 +11,8 @@ class HomePageViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var buttonLabel: UIButton!
+    var dataManager = DataManager()
+    var articles: [[String:Any]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +28,34 @@ class HomePageViewController: UIViewController, UITableViewDataSource {
         
         // Button
         configButton()
+        
+        // Fetch Data
+        self.dataManager.fetchData { data in
+            self.articles.append(data)
+            self.tableView.reloadData()
+        }
+        
+        
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        articles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as? TableViewCell ?? TableViewCell ()
+        cell.titleLabel.text = articles[indexPath.row]["title"] as? String ?? ""
+        guard let author = articles[indexPath.row]["aurthor"] as? [String:Any] else { return TableViewCell() }
+        print(author)
+        cell.autorNameLabel.text = author["name"] as? String ?? ""
+        let timeStamp = articles[indexPath.row]["createdTime"]
+        let date = Date(timeIntervalSince1970: timeStamp as? TimeInterval ?? 1480134638.0)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY/MM/dd"
+        cell.createdTimeLabel.text = dateFormatter.string(from: date)
+        cell.contentLabel.text = articles[indexPath.row]["content"] as? String ?? ""
+        cell.categoryLabel.text = articles[indexPath.row]["category"] as? String ?? ""
         return cell
     }
     
@@ -52,6 +74,12 @@ class HomePageViewController: UIViewController, UITableViewDataSource {
         buttonLabel.layer.cornerRadius = buttonLabel.bounds.width / 2
         buttonLabel.setTitle("+", for: .normal)
         buttonLabel.tintColor = .white
+    }
+    
+    
+    @IBAction func createArticle(_ sender: Any) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "PublishArticlePageViewController") as? PublishArticlePageViewController else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

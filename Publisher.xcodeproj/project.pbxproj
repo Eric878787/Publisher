@@ -18,6 +18,7 @@
 		42A31FDD27F7F1AD0023218E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A31FDC27F7F1AD0023218E /* TableViewCell.swift */; };
 		42A31FDF27F7F2C00023218E /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42A31FDE27F7F2C00023218E /* TableViewCell.xib */; };
 		42A31FE127F80C6B0023218E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 42A31FE027F80C6B0023218E /* GoogleService-Info.plist */; };
+		42A31FE327F813F40023218E /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A31FE227F813F40023218E /* DataModel.swift */; };
 		EF39F4CAEA90A4FAB55E8905 /* Pods_Publisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C115488CD3A39B703A509609 /* Pods_Publisher.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		42A31FDC27F7F1AD0023218E /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		42A31FDE27F7F2C00023218E /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		42A31FE027F80C6B0023218E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		42A31FE227F813F40023218E /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		C115488CD3A39B703A509609 /* Pods_Publisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Publisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -58,7 +60,6 @@
 				07080EA3F3BF866AD35C5787 /* Pods-Publisher.debug.xcconfig */,
 				2ADBF2EFE6CFB08E0768509F /* Pods-Publisher.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -101,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				42A31FDA27F7F18D0023218E /* DataManager.swift */,
+				42A31FE227F813F40023218E /* DataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -248,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42A31FE327F813F40023218E /* DataModel.swift in Sources */,
 				42A31FD827F7F1650023218E /* PublishArticlePageViewController.swift in Sources */,
 				42A31FDB27F7F18D0023218E /* DataManager.swift in Sources */,
 				42A31FC327F7DC4C0023218E /* HomePageViewController.swift in Sources */,
