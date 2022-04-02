@@ -15,6 +15,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var createdTimeLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var categoryBackGroundView: UIView!
     
     
     override func awakeFromNib() {
@@ -35,10 +36,9 @@ class TableViewCell: UITableViewCell {
         createdTimeLabel.textColor = .black
         contentLabel.font = UIFont(name: "PingFangTC-Regular", size: 14)
         contentLabel.textColor = .black
-        categoryLabel.backgroundColor = .lightGray
-        categoryLabel.layer.cornerRadius = 5
         categoryLabel.layer.masksToBounds = true
         categoryLabel.font = UIFont(name: "Arial", size: 14)
+        categoryBackGroundView.layer.cornerRadius = 5
         
     }
     

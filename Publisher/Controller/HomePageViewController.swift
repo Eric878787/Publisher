@@ -38,8 +38,8 @@ class HomePageViewController: UIViewController, UITableViewDataSource {
         self.dataManager.fetchData { data in
             self.articles.append(data)
             self.articles.sort{
-                  ( $0["createdTime"] as? Double ?? 0 ) > ( $1["createdTime"] as? Double ?? 0)
-               }
+                ( $0["createdTime"] as? Double ?? 0 ) > ( $1["createdTime"] as? Double ?? 0)
+            }
             self.tableView.reloadData()
         }
         
@@ -50,8 +50,8 @@ class HomePageViewController: UIViewController, UITableViewDataSource {
             self.dataManager.fetchData { data in
                 self.articles.append(data)
                 self.articles.sort{
-                      ( $0["createdTime"] as? Double ?? 0 ) > ( $1["createdTime"] as? Double ?? 0)
-                   }
+                    ( $0["createdTime"] as? Double ?? 0 ) > ( $1["createdTime"] as? Double ?? 0)
+                }
             }
             self.tableView.es.stopPullToRefresh()
         }
@@ -76,6 +76,15 @@ class HomePageViewController: UIViewController, UITableViewDataSource {
         cell.createdTimeLabel.text = dateFormatter.string(from: date)
         cell.contentLabel.text = articles[indexPath.row]["content"] as? String ?? ""
         cell.categoryLabel.text = articles[indexPath.row]["category"] as? String ?? ""
+        if articles[indexPath.row]["category"] as? String ?? "" == "Gossiping" {
+            cell.categoryLabel.textColor = .systemGreen
+        } else if articles[indexPath.row]["category"] as? String ?? "" == "Beauty" {
+            cell.categoryLabel.textColor = .blue
+        } else if articles[indexPath.row]["category"] as? String ?? "" == "IU" {
+            cell.categoryLabel.textColor = .purple
+        } else {
+            cell.categoryLabel.textColor = .white
+        }
         return cell
     }
     

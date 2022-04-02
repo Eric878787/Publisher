@@ -26,12 +26,24 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gT-wb-vpF">
-                    <rect key="frame" x="519.5" y="44.5" width="67.5" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pn6-f8-ZOK">
+                    <rect key="frame" x="509.5" y="44.5" width="77.5" height="31"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gT-wb-vpF">
+                            <rect key="frame" x="5" y="5" width="67.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    <constraints>
+                        <constraint firstItem="8gT-wb-vpF" firstAttribute="centerX" secondItem="pn6-f8-ZOK" secondAttribute="centerX" id="G0g-a8-OK7"/>
+                        <constraint firstAttribute="height" secondItem="8gT-wb-vpF" secondAttribute="height" constant="10" id="Gxo-Qx-cIi"/>
+                        <constraint firstItem="8gT-wb-vpF" firstAttribute="centerY" secondItem="pn6-f8-ZOK" secondAttribute="centerY" id="rYr-WA-sM0"/>
+                        <constraint firstAttribute="width" secondItem="8gT-wb-vpF" secondAttribute="width" constant="10" id="zyh-Qq-gvb"/>
+                    </constraints>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="created time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kma-FR-Zwn">
                     <rect key="frame" x="16" y="73.5" width="96" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -53,19 +65,20 @@
                 <constraint firstItem="UCK-xn-7RS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="2fm-HW-1L0"/>
                 <constraint firstItem="xCQ-8Z-a2N" firstAttribute="top" secondItem="kma-FR-Zwn" secondAttribute="bottom" constant="8" id="5ll-b8-4AQ"/>
                 <constraint firstItem="4Lc-IC-F6O" firstAttribute="top" secondItem="UCK-xn-7RS" secondAttribute="bottom" constant="8" id="5vk-eP-Lm7"/>
+                <constraint firstAttribute="trailing" secondItem="pn6-f8-ZOK" secondAttribute="trailing" constant="16" id="8JT-WB-Ecs"/>
                 <constraint firstItem="kma-FR-Zwn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="FXS-HJ-Rqr"/>
                 <constraint firstAttribute="trailing" secondItem="xCQ-8Z-a2N" secondAttribute="trailing" constant="16" id="Hga-Gu-feh"/>
                 <constraint firstItem="kma-FR-Zwn" firstAttribute="top" secondItem="4Lc-IC-F6O" secondAttribute="bottom" constant="8" id="PGl-T9-SlH"/>
-                <constraint firstItem="8gT-wb-vpF" firstAttribute="top" secondItem="UCK-xn-7RS" secondAttribute="bottom" constant="8" id="SAU-uR-Xsr"/>
                 <constraint firstItem="4Lc-IC-F6O" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="SjW-DC-KIG"/>
-                <constraint firstAttribute="trailing" secondItem="8gT-wb-vpF" secondAttribute="trailing" constant="16" id="dG8-b6-ycV"/>
                 <constraint firstAttribute="bottom" secondItem="xCQ-8Z-a2N" secondAttribute="bottom" constant="16" id="eX4-BR-Woa"/>
                 <constraint firstAttribute="trailing" secondItem="UCK-xn-7RS" secondAttribute="trailing" constant="16" id="nYj-70-f3M"/>
                 <constraint firstItem="xCQ-8Z-a2N" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="uGG-5c-ov9"/>
+                <constraint firstItem="pn6-f8-ZOK" firstAttribute="top" secondItem="UCK-xn-7RS" secondAttribute="bottom" constant="8" id="yN2-rb-xYZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="autorNameLabel" destination="4Lc-IC-F6O" id="zD9-qM-FdY"/>
+                <outlet property="categoryBackGroundView" destination="pn6-f8-ZOK" id="ijg-k0-qc9"/>
                 <outlet property="categoryLabel" destination="8gT-wb-vpF" id="sej-td-EAd"/>
                 <outlet property="contentLabel" destination="xCQ-8Z-a2N" id="MiV-UA-rnm"/>
                 <outlet property="createdTimeLabel" destination="kma-FR-Zwn" id="4De-fb-KNd"/>
@@ -77,6 +90,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
